@@ -16,7 +16,17 @@
 
 
         <script type='text/babel'>
-            ReactDOM.render(<h1>Hello World</h1>, document.getElementById('app'));
+            //React component
+            var myApp = function(){
+                return(
+                    <div className="myApp">
+                        <h1 className="title">Flashback</h1>
+                        <p className="sub-title">A interactive flashcard app.</p>
+                    </div>
+                );
+            };
+
+            ReactDOM.render(myApp(), document.getElementById('app'));
         </script>
   </body>
 </html>
