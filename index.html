@@ -16,35 +16,50 @@
 
 
         <script type='text/babel'>
-            //React functional component
-            var myApp = function(){
-                return(
-                    <div className="myApp">
-                        <h1 className="title">Flashback</h1>
-                        <p className="sub-title">A interactive flashcard app.</p>
-                        <div className="card-list">
-                            {Card()} 
+            var cardData = {
+                front: {
+                    question: 'You may know that React was created at _________.',
+                    hint: 'This company\'s site is known for being written in PHP.'
+                }
+            };
+            //ES6 class
+            class App extends React.Component{
+                render() {
+                        return(
+                        <div className='myApp'>
+                            <h1 className="title">
+                                Flashback
+                            </h1>
+                            <p className="sub-title">
+                                A interactive flashcard app.
+                            </p>
+                            <div className="card-list">
+                                <Card front={cardData.front}/>
+                            </div>
                         </div>
-                    </div>
-                );
+                    );
+                }
             };
             
-            var Card = function(){
-                return(
+            class Card extends React.Component{
+                render() {
+                    return(
                     <div className="Card -front">
                         <div className="front">
                             <h3 className="question">
-                                You may know that React was created at _________.
+                                {this.props.front.question}
                             </h3>
                             <p className="hint">
-                                <span>Hint:</span>This company's site is known for being written in PHP.
+                                <span>Hint:</span>
+                                {this.props.front.hint}
                             </p>
                         </div>
                     </div>
                 );
+                }
             };
 
-            ReactDOM.render(myApp(), document.getElementById('app'));
+            ReactDOM.render(<App />, document.getElementById('app'));
         </script>
   </body>
 </html>
