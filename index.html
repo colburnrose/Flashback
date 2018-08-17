@@ -22,6 +22,19 @@
 
             //ES6 class
             class App extends React.Component{
+                constructor(){
+                    super();
+                    this.state = {
+                        cardData: []
+                    };
+                    this.componentDidMount.bind(this)
+                }
+                // load data such as external files or http request here.
+                componentDidMount() {
+                    this.setState({cardData: cardData});
+                }
+
+
                 render() {
                         return(
                         <div className='App'>
@@ -30,9 +43,9 @@
                             </h1>
                             <p className="sub-title">
                                 A interactive flashcard app.
-                            </p>
+                            </p>                          
                             <div className="card-list">
-                                {cardData.map((card, index) => <Card key={index} front={card.front}/>)}
+                                {this.state.cardData.map((card, index) => <Card key={index} front={card.front}/>)}
                             </div>
                         </div>
                     );
