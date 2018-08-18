@@ -34,6 +34,20 @@
                     this.setState({cardData: cardData});
                 }
 
+                //shuffle through cards
+                shuffleBackward = () => {
+                    const {cardData} = this.state;
+                    const newCardData = [cardData[6], ...cardData.slice(0,6)];
+                    this.setState({cardData: newCardData})
+                    console.log(newCardData)
+                }
+                
+                shuffleFordward = () => {
+                   const {cardData} = this.state;
+                   const newCardData = [...cardData.slice(1), cardData[0]];
+                   this.setState({cardData: newCardData})
+                   console.log(newCardData)
+                } 
 
                 render() {
                         return(
@@ -46,6 +60,11 @@
                             </p>                          
                             <div className="card-list">
                                 {this.state.cardData.map((card, index) => <Card key={index} front={card.front}/>)}
+                            </div>
+                            <div className="buttons">
+                                <button onClick={()=> this.shuffleBackward()}>&lt;</button>
+
+                                <button onClick={()=> this.shuffleFordward()}>&gt;</button>
                             </div>
                         </div>
                     );
